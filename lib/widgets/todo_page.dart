@@ -9,10 +9,11 @@ class TodoPage extends StatefulWidget {
   const TodoPage({super.key, required this.title});
 
   @override
-  State<TodoPage> createState() => _TodoPageState();
+  State<TodoPage> createState() => TodoPageState();
 }
 
-class _TodoPageState extends State<TodoPage> {
+@visibleForTesting
+class TodoPageState extends State<TodoPage> {
   List<Todo> todos = [];
   ScrollController scrollController = ScrollController();
   Todo? selectedTodo;
@@ -20,6 +21,7 @@ class _TodoPageState extends State<TodoPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -40,7 +42,7 @@ class _TodoPageState extends State<TodoPage> {
               tileColor: todo.isCompleted ? theme.disabledColor : null,
               title: TodoItem(
                 item: todo,
-                key: Key('item_${todo.id}'),
+                key: ValueKey('item_${todo.id}'),
                 onCheckBoxTap: _handleCheckBoxTap,
               ),
             ),
@@ -48,6 +50,7 @@ class _TodoPageState extends State<TodoPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        key: const ValueKey('todo_creation'),
         onPressed: _createTask,
         tooltip: 'Increment',
         child: const Icon(Icons.add),

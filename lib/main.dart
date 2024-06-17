@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lecture_about_tests/widgets/todo_page.dart';
+import 'package:lecture_about_tests/domain/environment.dart';
+import 'package:lecture_about_tests/widgets/app.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo List',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const TodoPage(title: 'Today Tasks'),
-    );
-  }
-}
+void main() => runApp(const MyApp(environment: Environment.production));

@@ -27,9 +27,10 @@ class TodoItem extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () => onCheckBoxTap(item),
-          child: Icon(item.isCompleted
-              ? Icons.check_box
-              : Icons.check_box_outline_blank),
+          child: Icon(
+            item.isCompleted ? Icons.check_box : Icons.check_box_outline_blank,
+            key: ValueKey('item_icon_${item.id}'),
+          ),
         )
       ],
     );
