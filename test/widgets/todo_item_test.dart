@@ -9,18 +9,19 @@ void main() {
         (widgetTester) async {
       //  arrange
       final completedTodo = Todo(id: 1, title: '', isCompleted: true);
-
       final todoItemWidget = TodoItem(
         item: completedTodo,
         onCheckBoxTap: (_) {},
       );
 
+      //  act
       await widgetTester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: todoItemWidget,
         ),
       ));
 
+      //  assert
       final iconFinder = find.byType(Icon);
       expect(iconFinder, findsOneWidget);
     });
@@ -29,7 +30,6 @@ void main() {
         (widgetTester) async {
       //  arrange
       final completedTodo = Todo(id: 1, title: '', isCompleted: true);
-
       final todoItemWidget = TodoItem(
         item: completedTodo,
         onCheckBoxTap: (_) {},
@@ -53,7 +53,6 @@ void main() {
         (widgetTester) async {
       //  arrange
       final completedTodo = Todo(id: 1, title: '', isCompleted: false);
-
       final todoItemWidget = TodoItem(
         item: completedTodo,
         onCheckBoxTap: (_) {},
@@ -76,7 +75,6 @@ void main() {
         (widgetTester) async {
       //  arrange
       final completedTodo = Todo(id: 1, title: '', isCompleted: true);
-
       final todoItemWidget = TodoItem(
         item: completedTodo,
         onCheckBoxTap: (_) {},
