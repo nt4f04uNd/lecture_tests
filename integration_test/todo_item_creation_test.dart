@@ -22,7 +22,6 @@ void main() {
       );
 
       //  act
-
       final fab = find.byKey(const ValueKey('todo_creation'));
       const createdTodosCount = 5;
       for (var i = 0; i <= createdTodosCount; i++) {
