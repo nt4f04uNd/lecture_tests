@@ -4,11 +4,11 @@ import 'package:lecture_about_tests/domain/todo.dart';
 class TodoRepository {
   /// InMemory хранилище данных
   Set<Todo> _todos = {
-    Todo(id: 1, title: 'Task 1', isCompleted: false),
-    Todo(id: 2, title: 'Task 2', isCompleted: false),
-    Todo(id: 3, title: 'Task 3', isCompleted: false),
-    Todo(id: 4, title: 'Task 4', isCompleted: false),
-    Todo(id: 5, title: 'Task 5', isCompleted: false),
+    const Todo(id: 1, title: 'Task 1', isCompleted: false),
+    const Todo(id: 2, title: 'Task 2', isCompleted: false),
+    const Todo(id: 3, title: 'Task 3', isCompleted: false),
+    const Todo(id: 4, title: 'Task 4', isCompleted: false),
+    const Todo(id: 5, title: 'Task 5', isCompleted: false),
   };
 
   /// Получить из хранилища все задачи
@@ -67,7 +67,16 @@ class TodoRepository {
   /// Проверяет наличие задачи в хранилище
   void _guard(int id) {
     if (_todos.none((e) => e.id == id)) {
-      throw Exception('There are no todo with id = $id!');
+      throw NotFoundException('There are no todo with id = $id!');
     }
   }
+}
+
+class NotFoundException implements Exception {
+  final String message;
+
+  NotFoundException(this.message);
+
+  @override
+  String toString() => 'NotFoundException{message: $message}';
 }

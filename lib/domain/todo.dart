@@ -1,9 +1,11 @@
 class Todo {
+  static const Todo unknown = Todo(id: -1, title: '', isCompleted: false);
+
   final int id;
   final String title;
   final bool isCompleted;
 
-  Todo({
+  const Todo({
     required this.id,
     required this.title,
     required this.isCompleted,
