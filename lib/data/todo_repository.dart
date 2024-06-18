@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:lecture_about_tests/domain/todo.dart';
 
 class TodoRepository {
+  /// InMemory хранилище данных
   Set<Todo> _todos = {
     Todo(id: 1, title: 'Task 1', isCompleted: false),
     Todo(id: 2, title: 'Task 2', isCompleted: false),
@@ -10,13 +11,10 @@ class TodoRepository {
     Todo(id: 5, title: 'Task 5', isCompleted: false),
   };
 
-  void completeTodo(Todo todo) {
-    _guard(todo.id);
-    _todos = _todos
-        .map((e) => e == todo ? e.copyWith(isCompleted: true) : e)
-        .toSet();
-  }
+  /// Получить из хранилища все задачи
+  Iterable<Todo> fetchAll() => _todos.sorted((a, b) => a.id.compareTo(b.id));
 
+  /// Создать новую задачу
   Todo create({bool isCompleted = false}) {
     final sortedTodos = fetchAll();
     final id = sortedTodos.last.id + 1;
@@ -27,13 +25,21 @@ class TodoRepository {
     return todo;
   }
 
-  Iterable<Todo> fetchAll() => _todos.sorted((a, b) => a.id.compareTo(b.id));
-
+  /// Удалить задачу по ее Id
   void removeById(int id) {
     _guard(id);
     _todos = _todos.where((e) => e.id != id).toSet();
   }
 
+  /// Завершить задачу
+  void completeTodo(Todo todo) {
+    _guard(todo.id);
+    _todos = _todos
+        .map((e) => e == todo ? e.copyWith(isCompleted: true) : e)
+        .toSet();
+  }
+
+  /// Восстановить задачу в незавершенное состояние
   void unCompleteTodo(Todo todo) {
     _guard(todo.id);
     _todos = _todos
@@ -41,6 +47,7 @@ class TodoRepository {
         .toSet();
   }
 
+  /// Обновить задачу
   void update({
     required int id,
     required String title,
@@ -57,6 +64,7 @@ class TodoRepository {
         .toSet();
   }
 
+  /// Проверяет наличие задачи в хранилище
   void _guard(int id) {
     if (_todos.none((e) => e.id == id)) {
       throw Exception('There are no todo with id = $id!');
