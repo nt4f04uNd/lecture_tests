@@ -19,6 +19,13 @@ class TodoPageState extends State<TodoPage> {
   Todo? selectedTodo;
 
   @override
+  void initState() {
+    super.initState();
+    todos = DI.todoRepository.fetchAll().toList();
+    selectedTodo = todos.last;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
@@ -57,13 +64,6 @@ class TodoPageState extends State<TodoPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    todos = DI.todoRepository.fetchAll().toList();
-    selectedTodo = todos.last;
   }
 
   void _createTask() {
