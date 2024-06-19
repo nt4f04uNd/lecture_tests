@@ -14,7 +14,7 @@ void main() {
     testWidgets('должен правильно рендериться для завершенной модели Todo',
         (widgetTester) async {
       //  arrange
-      final completedTodo = Todo(
+      const completedTodo = Todo(
         id: 1,
         title: 'It' 's completed task',
         isCompleted: true,

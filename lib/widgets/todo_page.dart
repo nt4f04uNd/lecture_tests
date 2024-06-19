@@ -22,7 +22,7 @@ class TodoPageState extends State<TodoPage> {
   void initState() {
     super.initState();
     todos = DI.todoRepository.fetchAll().toList();
-    selectedTodo = todos.last;
+    selectedTodo = todos.lastOrNull;
   }
 
   @override
