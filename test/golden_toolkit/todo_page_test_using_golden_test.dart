@@ -10,7 +10,8 @@ void main() {
   });
 
   group('TodoPage widget', () {
-    testGoldens('должен правильно рендерить список моделей Todo для разных типов устройств',
+    testGoldens(
+        'должен правильно рендерить список моделей Todo для разных типов устройств',
         (widgetTester) async {
       //  arrange
 

@@ -20,7 +20,9 @@ class TodoItem extends StatelessWidget {
         Expanded(
           child: Text(
             item.title,
-            style: item.isCompleted ? const TextStyle(decoration: TextDecoration.lineThrough) : null,
+            style: item.isCompleted
+                ? const TextStyle(decoration: TextDecoration.lineThrough)
+                : null,
           ),
         ),
         GestureDetector(

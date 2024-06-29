@@ -33,7 +33,7 @@ void main() {
 
       //  assert
       final actualFinder = find.byType(Row);
-      expectLater(
+      await expectLater(
         actualFinder,
         matchesGoldenFile('templates/todo_completed_item.png'),
       );

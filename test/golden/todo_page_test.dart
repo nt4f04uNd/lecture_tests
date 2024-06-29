@@ -22,7 +22,7 @@ void main() {
 
       //  assert
       final actualFinder = find.byType(TodoPage);
-      expectLater(
+      await expectLater(
         actualFinder,
         matchesGoldenFile('templates/todo_page.png'),
       );
