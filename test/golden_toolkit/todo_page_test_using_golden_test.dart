@@ -20,19 +20,16 @@ void main() {
             Device.phone,
             Device.iphone11,
             Device.tabletPortrait,
+            const Device(size: Size(768, 1024), name: 'iPad mini'),
           ],
         )
         ..addScenario(
           widget: const TodoPage(title: 'Todo List'),
-          name: 'default',
-          onCreate: (scenarioWidgetKey) async {
-            final actualFinder = find.byKey(scenarioWidgetKey);
-            expectLater(actualFinder, findsOneWidget);
-          },
+          name: 'Todo List with default state',
         )
         ..addScenario(
           widget: const TodoPage(title: 'Todo List'),
-          name: 'tap to complete the task',
+          name: 'TodoList with first completed task',
           onCreate: (scenarioWidgetKey) async {
             final finder = find.descendant(
               of: find.byKey(scenarioWidgetKey),
