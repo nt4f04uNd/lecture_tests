@@ -4,10 +4,6 @@ import 'package:lecture_about_tests/domain/todo.dart';
 import 'package:lecture_about_tests/widgets/todo_item.dart';
 
 void main() {
-  setUp(() async {
-    TestWidgetsFlutterBinding.ensureInitialized();
-  });
-
   group('TodoItem widget', () {
     testWidgets('должен правильно рендериться для завершенной модели Todo',
         (widgetTester) async {

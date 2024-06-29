@@ -11,7 +11,8 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('OnTap по кнопке создания Todo', () {
-    testWidgets('должен создавать новый элемент TodoItem в списке задач', (widgetTester) async {
+    testWidgets('должен создавать новый элемент TodoItem в списке задач',
+        (widgetTester) async {
       //  arrange
       final todos = DI.todoRepository.fetchAll();
       await widgetTester.pumpWidget(
@@ -23,12 +24,12 @@ void main() {
       //  act
       final fab = find.byKey(const ValueKey('todo_creation'));
       const createdTodosCount = 5;
-      for (var i = 0; i <= createdTodosCount; i++) {
+      for (var i = 0; i < createdTodosCount; i++) {
         //  создаем таску
         await widgetTester.tap(fab);
         await widgetTester.pumpAndSettle();
       }
-      final lastTodoId = todos.last.id + createdTodosCount + 1;
+      final lastTodoId = todos.last.id + createdTodosCount;
 
       final listFinder = find.byType(Scrollable);
       final key = ValueKey('item_$lastTodoId');
@@ -47,7 +48,8 @@ void main() {
   });
 
   group('OnTap по иконке завершения', () {
-    testWidgets('должен переводить модель Todo в завершенное состояние', (widgetTester) async {
+    testWidgets('должен переводить модель Todo в завершенное состояние',
+        (widgetTester) async {
       //  arrange
       final todoList = DI.todoRepository.fetchAll();
       await widgetTester.pumpWidget(
@@ -72,7 +74,8 @@ void main() {
       expect(items.length, totalCount);
 
       final pageState = widgetTester.allStates.whereType<TodoPageState>().first;
-      expect(pageState.todos.where((e) => e.isCompleted).length, completedTodosCount);
+      expect(pageState.todos.where((e) => e.isCompleted).length,
+          completedTodosCount);
     });
   });
 }

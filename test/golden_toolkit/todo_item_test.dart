@@ -6,7 +6,6 @@ import 'package:lecture_about_tests/widgets/todo_item.dart';
 
 void main() {
   setUp(() async {
-    TestWidgetsFlutterBinding.ensureInitialized();
     await loadAppFonts();
   });
 
