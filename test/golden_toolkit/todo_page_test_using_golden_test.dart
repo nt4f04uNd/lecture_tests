@@ -35,6 +35,7 @@ void main() {
               of: find.byKey(scenarioWidgetKey),
               matching: find.byKey(const ValueKey('item_icon_1')),
             );
+
             expect(finder, findsOneWidget);
             await widgetTester.tap(finder);
           },
