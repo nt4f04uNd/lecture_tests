@@ -5,7 +5,8 @@ import 'package:lecture_about_tests/domain/todo.dart';
 
 void main() {
   group('TodoRepository', () {
-    test('и его метод fetchAll должен вернуть таски в упорядоченном порядке', () {
+    test('и его метод fetchAll должен вернуть 5 задач в упорядоченном порядке',
+        () {
       //  arrange
       final repository = DI.todoRepository;
 
@@ -21,9 +22,8 @@ void main() {
 
       // expect(actualIds, hasLength(6));
 
-      final expectedIds = [1, 2, 3, 4, 5, 6];
+      final expectedIds = [1, 2, 3, 4, 5];
       expect(actualIds, orderedEquals(expectedIds));
-      // expect(actualIds, [1, 2, 3, 4, 5, 6]);
     });
 
     group('и его метод create', () {
@@ -65,12 +65,14 @@ void main() {
         expect(actualTodoIds, isNot(contains(1)));
       });
 
-      test('при указании несуществующей задачи должен упасть с исключением', () {
+      test('при указании несуществующей задачи должен упасть с исключением',
+          () {
         //  arrange
         final repository = DI.todoRepository;
 
         //  assert
-        expect(() => repository.removeById(-1), throwsA(isA<NotFoundException>()));
+        expect(
+            () => repository.removeById(-1), throwsA(isA<NotFoundException>()));
       });
     });
 
@@ -88,11 +90,13 @@ void main() {
         expect(actualFirstTodo.isCompleted, isTrue);
       });
 
-      test('при указании несуществующей задачи должен упасть с исключением', () {
+      test('при указании несуществующей задачи должен упасть с исключением',
+          () {
         final repository = DI.todoRepository;
 
         //  assert
-        expect(() => repository.completeTodo(Todo.unknown), throwsA(isA<NotFoundException>()));
+        expect(() => repository.completeTodo(Todo.unknown),
+            throwsA(isA<NotFoundException>()));
       });
     });
 
@@ -115,11 +119,13 @@ void main() {
         expect(actualFirstTodo.isCompleted, isFalse);
       });
 
-      test('при указании несуществующей задачи должен упасть с исключением', () {
+      test('при указании несуществующей задачи должен упасть с исключением',
+          () {
         final repository = DI.todoRepository;
 
         //  assert
-        expect(() => repository.completeTodo(Todo.unknown), throwsA(isA<NotFoundException>()));
+        expect(() => repository.completeTodo(Todo.unknown),
+            throwsA(isA<NotFoundException>()));
       });
     });
   });
