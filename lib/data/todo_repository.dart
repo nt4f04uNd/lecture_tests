@@ -11,7 +11,7 @@ class TodoRepository {
     const Todo(id: 5, title: 'Task 5', isCompleted: false),
   };
 
-  /// Получить из хранилища все задачи
+  /// Получить из хранилища все задачи в отсортированном порядке
   Iterable<Todo> fetchAll() => _todos.sorted((a, b) => a.id.compareTo(b.id));
 
   /// Создать новую задачу
