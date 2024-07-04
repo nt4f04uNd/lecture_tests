@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 
-typedef CheckBoxTapCallback = void Function(Todo);
+typedef CheckBoxTapCallback = void Function(TodoModel);
 
 class TodoItemWidget extends StatelessWidget {
-  final Todo item;
+  final TodoModel item;
   final CheckBoxTapCallback onCheckBoxTap;
 
   const TodoItemWidget({

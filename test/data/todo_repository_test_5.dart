@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lecture_about_tests/data/todo_repository.dart';
 import 'package:lecture_about_tests/di.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 
 void main() {
   group('TodoRepository', () {
@@ -95,7 +95,7 @@ void main() {
         final repository = DI.todoRepository;
 
         //  assert
-        expect(() => repository.completeTodo(Todo.unknown),
+        expect(() => repository.completeTodo(TodoModel.unknown),
             throwsA(isA<NotFoundException>()));
       });
     });
@@ -124,7 +124,7 @@ void main() {
         final repository = DI.todoRepository;
 
         //  assert
-        expect(() => repository.completeTodo(Todo.unknown),
+        expect(() => repository.completeTodo(TodoModel.unknown),
             throwsA(isA<NotFoundException>()));
       });
     });

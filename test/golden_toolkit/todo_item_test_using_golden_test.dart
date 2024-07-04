@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 import 'package:lecture_about_tests/widgets/todo_item.dart';
 
 void main() {
@@ -14,9 +14,9 @@ void main() {
         (widgetTester) async {
       //  arrange
       const completedTask =
-          Todo(id: -1, title: 'CompletedTask', isCompleted: true);
+          TodoModel(id: -1, title: 'CompletedTask', isCompleted: true);
       const uncompletedTask =
-          Todo(id: -1, title: 'UncompletedTask', isCompleted: false);
+          TodoModel(id: -1, title: 'UncompletedTask', isCompleted: false);
 
       //  act
       final builder = DeviceBuilder()

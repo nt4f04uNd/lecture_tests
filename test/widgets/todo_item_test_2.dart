@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 import 'package:lecture_about_tests/widgets/todo_item.dart';
 
 void main() {
@@ -9,7 +9,7 @@ void main() {
         'должен показать незавершенные Todo с иконкой check_box_outline_blank',
         (widgetTester) async {
       //  arrange
-      const completedTodo = Todo(id: 1, title: '', isCompleted: false);
+      const completedTodo = TodoModel(id: 1, title: '', isCompleted: false);
       final todoItemWidget = TodoItemWidget(
         item: completedTodo,
         onCheckBoxTap: (_) {},
@@ -30,7 +30,7 @@ void main() {
     testWidgets('должен показать выполненные Todo с иконкой check_box',
         (widgetTester) async {
       //  arrange
-      const completedTodo = Todo(id: 1, title: '', isCompleted: true);
+      const completedTodo = TodoModel(id: 1, title: '', isCompleted: true);
       final todoItemWidget = TodoItemWidget(
         item: completedTodo,
         onCheckBoxTap: (_) {},
@@ -53,7 +53,7 @@ void main() {
         'должен показать незавершенный Todo с иконкой check_box_outline_blank',
         (widgetTester) async {
       //  arrange
-      const completedTodo = Todo(id: 1, title: '', isCompleted: false);
+      const completedTodo = TodoModel(id: 1, title: '', isCompleted: false);
       final todoItemWidget = TodoItemWidget(
         item: completedTodo,
         onCheckBoxTap: (_) {},
@@ -75,7 +75,7 @@ void main() {
     testWidgets('должен показать перечеркнутый текст для выполненного Todo',
         (widgetTester) async {
       //  arrange
-      const completedTodo = Todo(id: 1, title: '', isCompleted: true);
+      const completedTodo = TodoModel(id: 1, title: '', isCompleted: true);
       final todoItemWidget = TodoItemWidget(
         item: completedTodo,
         onCheckBoxTap: (_) {},

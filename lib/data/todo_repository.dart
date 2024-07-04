@@ -1,25 +1,26 @@
 import 'package:collection/collection.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 
 class TodoRepository {
   /// InMemory хранилище данных
-  Set<Todo> _todos = {
-    const Todo(id: 2, title: 'Task 2', isCompleted: false),
-    const Todo(id: 4, title: 'Task 4', isCompleted: false),
-    const Todo(id: 3, title: 'Task 3', isCompleted: false),
-    const Todo(id: 1, title: 'Task 1', isCompleted: false),
-    const Todo(id: 5, title: 'Task 5', isCompleted: false),
+  Set<TodoModel> _todos = {
+    const TodoModel(id: 2, title: 'Task 2', isCompleted: false),
+    const TodoModel(id: 4, title: 'Task 4', isCompleted: false),
+    const TodoModel(id: 3, title: 'Task 3', isCompleted: false),
+    const TodoModel(id: 1, title: 'Task 1', isCompleted: false),
+    const TodoModel(id: 5, title: 'Task 5', isCompleted: false),
   };
 
   /// Получить из хранилища все задачи в отсортированном порядке
-  Iterable<Todo> fetchAll() => _todos.sorted((a, b) => a.id.compareTo(b.id));
+  Iterable<TodoModel> fetchAll() =>
+      _todos.sorted((a, b) => a.id.compareTo(b.id));
 
   /// Создать новую задачу
-  Todo create({bool isCompleted = false}) {
+  TodoModel create({bool isCompleted = false}) {
     final sortedTodos = fetchAll();
     final id = sortedTodos.last.id + 1;
 
-    final todo = Todo(id: id, title: 'Task $id', isCompleted: isCompleted);
+    final todo = TodoModel(id: id, title: 'Task $id', isCompleted: isCompleted);
     _todos.add(todo);
 
     return todo;
@@ -32,7 +33,7 @@ class TodoRepository {
   }
 
   /// Завершить задачу
-  void completeTodo(Todo todo) {
+  void completeTodo(TodoModel todo) {
     _guard(todo.id);
     _todos = _todos
         .map((e) => e == todo ? e.copyWith(isCompleted: true) : e)
@@ -40,7 +41,7 @@ class TodoRepository {
   }
 
   /// Восстановить задачу в незавершенное состояние
-  void unCompleteTodo(Todo todo) {
+  void unCompleteTodo(TodoModel todo) {
     _guard(todo.id);
     _todos = _todos
         .map((e) => e == todo ? e.copyWith(isCompleted: false) : e)

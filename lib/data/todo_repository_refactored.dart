@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 
 class TodoRepository {
   final TodoApi _todoApi;
@@ -14,7 +14,7 @@ class TodoRepository {
   }
 
   /// Получить из хранилища все задачи
-  Future<Iterable<Todo>> fetchAll() {
+  Future<Iterable<TodoModel>> fetchAll() {
     return _todoApi.getTodos();
   }
 }
@@ -24,13 +24,13 @@ class TodoApi {
 
   TodoApi({required Dio dio}) : _dio = dio;
 
-  Future<Iterable<Todo>> getTodos() async {
+  Future<Iterable<TodoModel>> getTodos() async {
     final response = await _dio.get<List<dynamic>>('https://someapi.com/all');
     final json = response.data as List<dynamic>;
 
     return json.map((e) {
       final todoDto = e as Map<String, dynamic>;
-      return Todo(
+      return TodoModel(
         id: todoDto['id'] as int,
         title: todoDto['title'] as String,
         isCompleted: todoDto['is_completed'] as bool,

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lecture_about_tests/data/todo_repository_refactored.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() {
@@ -10,11 +10,11 @@ void main() {
   setUp(() {
     todoApiMock = TodoApiMock();
     when(() => todoApiMock.saveTodo(any(), any()))
-        .thenAnswer((_) async => Todo.unknown);
+        .thenAnswer((_) async => TodoModel.unknown);
 
     when(() => todoApiMock.saveTodo(
             any(that: isA<String>()), any(that: isA<bool>())))
-        .thenAnswer((_) async => Todo.unknown);
+        .thenAnswer((_) async => TodoModel.unknown);
 
     repository = TodoRepository(todoApi: todoApiMock);
   });

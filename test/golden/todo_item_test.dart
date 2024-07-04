@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 import 'package:lecture_about_tests/widgets/todo_item.dart';
 
 void main() {
@@ -8,7 +8,7 @@ void main() {
     testWidgets('должен правильно рендериться для завершенной модели Todo',
         (widgetTester) async {
       //  arrange
-      const completedTodo = Todo(
+      const completedTodo = TodoModel(
         id: 1,
         title: 'It' 's completed task',
         isCompleted: true,

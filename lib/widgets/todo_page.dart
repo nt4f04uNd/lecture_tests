@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lecture_about_tests/data/todo_repository.dart';
 import 'package:lecture_about_tests/di.dart';
-import 'package:lecture_about_tests/domain/todo.dart';
+import 'package:lecture_about_tests/domain/todo_model.dart';
 import 'package:lecture_about_tests/widgets/todo_item.dart';
 
 class TodoPage extends StatefulWidget {
@@ -20,9 +20,9 @@ class TodoPage extends StatefulWidget {
 
 @visibleForTesting
 class TodoPageState extends State<TodoPage> {
-  List<Todo> todos = [];
+  List<TodoModel> todos = [];
   ScrollController scrollController = ScrollController();
-  Todo? selectedTodo;
+  TodoModel? selectedTodo;
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class TodoPageState extends State<TodoPage> {
     });
   }
 
-  void _handleCheckBoxTap(Todo todo) {
+  void _handleCheckBoxTap(TodoModel todo) {
     if (todo.isCompleted) {
       DI.todoRepository.unCompleteTodo(todo);
     } else {
@@ -99,5 +99,5 @@ class TodoPageState extends State<TodoPage> {
     });
   }
 
-  bool _isSelected(Todo todo) => selectedTodo?.id == todo.id;
+  bool _isSelected(TodoModel todo) => selectedTodo?.id == todo.id;
 }
