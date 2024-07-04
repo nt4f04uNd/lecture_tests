@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:lecture_about_tests/data/todo_repository.dart';
 import 'package:lecture_about_tests/di.dart';
 import 'package:lecture_about_tests/domain/todo.dart';
 import 'package:lecture_about_tests/widgets/todo_item.dart';
 
 class TodoPage extends StatefulWidget {
   final String title;
+  final TodoRepository todoRepository;
 
-  const TodoPage({super.key, required this.title});
+  const TodoPage({
+    required this.todoRepository,
+    required this.title,
+    super.key,
+  });
 
   @override
   State<TodoPage> createState() => TodoPageState();
@@ -21,7 +27,7 @@ class TodoPageState extends State<TodoPage> {
   @override
   void initState() {
     super.initState();
-    todos = DI.todoRepository.fetchAll().toList();
+    todos = widget.todoRepository.fetchAll().toList();
     selectedTodo = todos.lastOrNull;
   }
 

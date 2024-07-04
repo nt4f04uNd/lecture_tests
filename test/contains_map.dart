@@ -43,7 +43,6 @@ class _ContainsMap extends Matcher {
           .add('but does not contains entries ')
           .addDescriptionOf(diff.onlyInMap2)
           .add('\n');
-      ;
     }
 
     if (diff.differentValues.isNotEmpty) {

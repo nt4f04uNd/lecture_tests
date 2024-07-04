@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lecture_about_tests/di.dart';
 import 'package:lecture_about_tests/domain/environment.dart';
 import 'package:lecture_about_tests/widgets/todo_page.dart';
 
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
           useMaterial3: true,
         ),
-        home: const TodoPage(title: 'Today Tasks'),
+        home: TodoPage(
+          title: 'Today Tasks',
+          todoRepository: DI.todoRepository,
+        ),
       );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
+import 'package:lecture_about_tests/di.dart';
 import 'package:lecture_about_tests/widgets/todo_page.dart';
 
 void main() {
@@ -24,11 +25,17 @@ void main() {
           ],
         )
         ..addScenario(
-          widget: const TodoPage(title: 'Todo List'),
+          widget: TodoPage(
+            title: 'Todo List',
+            todoRepository: DI.todoRepository,
+          ),
           name: 'Todo List with default state',
         )
         ..addScenario(
-          widget: const TodoPage(title: 'Todo List'),
+          widget: TodoPage(
+            title: 'Todo List',
+            todoRepository: DI.todoRepository,
+          ),
           name: 'TodoList with first completed task',
           onCreate: (scenarioWidgetKey) async {
             final finder = find.descendant(
