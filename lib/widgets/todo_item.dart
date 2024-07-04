@@ -3,11 +3,11 @@ import 'package:lecture_about_tests/domain/todo.dart';
 
 typedef CheckBoxTapCallback = void Function(Todo);
 
-class TodoItem extends StatelessWidget {
+class TodoItemWidget extends StatelessWidget {
   final Todo item;
   final CheckBoxTapCallback onCheckBoxTap;
 
-  const TodoItem({
+  const TodoItemWidget({
     required this.item,
     required this.onCheckBoxTap,
     super.key,

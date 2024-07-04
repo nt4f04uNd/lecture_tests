@@ -18,7 +18,7 @@ void main() {
         title: 'It' 's completed task',
         isCompleted: true,
       );
-      final todoItemWidget = TodoItem(
+      final todoItemWidget = TodoItemWidget(
         item: completedTodo,
         onCheckBoxTap: (_) {},
       );

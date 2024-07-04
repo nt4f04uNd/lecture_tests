@@ -70,7 +70,7 @@ void main() {
       }
 
       //  assert
-      final items = widgetTester.allWidgets.whereType<TodoItem>();
+      final items = widgetTester.allWidgets.whereType<TodoItemWidget>();
       expect(items.length, totalCount);
 
       final pageState = widgetTester.allStates.whereType<TodoPageState>().first;

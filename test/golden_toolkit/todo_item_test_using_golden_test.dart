@@ -29,14 +29,14 @@ void main() {
           ],
         )
         ..addScenario(
-          widget: TodoItem(
+          widget: TodoItemWidget(
             item: completedTask,
             onCheckBoxTap: (_) {},
           ),
           name: 'Todo Item for completed Task',
         )
         ..addScenario(
-          widget: TodoItem(
+          widget: TodoItemWidget(
             item: uncompletedTask,
             onCheckBoxTap: (_) {},
           ),

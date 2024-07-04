@@ -5,10 +5,12 @@ import 'package:lecture_about_tests/widgets/todo_item.dart';
 
 void main() {
   group('TodoItem widget', () {
-    testWidgets('должен показать незавершенные Todo с иконкой check_box_outline_blank', (widgetTester) async {
+    testWidgets(
+        'должен показать незавершенные Todo с иконкой check_box_outline_blank',
+        (widgetTester) async {
       //  arrange
       const completedTodo = Todo(id: 1, title: '', isCompleted: false);
-      final todoItemWidget = TodoItem(
+      final todoItemWidget = TodoItemWidget(
         item: completedTodo,
         onCheckBoxTap: (_) {},
       );

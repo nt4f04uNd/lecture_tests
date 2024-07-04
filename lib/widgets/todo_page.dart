@@ -47,7 +47,7 @@ class TodoPageState extends State<TodoPage> {
               selectedTileColor: theme.primaryColor,
               selectedColor: theme.scaffoldBackgroundColor,
               tileColor: todo.isCompleted ? theme.disabledColor : null,
-              title: TodoItem(
+              title: TodoItemWidget(
                 item: todo,
                 key: ValueKey('item_${todo.id}'),
                 onCheckBoxTap: _handleCheckBoxTap,

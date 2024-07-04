@@ -13,7 +13,7 @@ void main() {
         title: 'It' 's completed task',
         isCompleted: true,
       );
-      final todoItemWidget = TodoItem(
+      final todoItemWidget = TodoItemWidget(
         item: completedTodo,
         onCheckBoxTap: (_) {},
       );
@@ -26,7 +26,7 @@ void main() {
       ));
 
       //  assert
-      final actualFinder = find.byType(TodoItem);
+      final actualFinder = find.byType(TodoItemWidget);
       await expectLater(
         actualFinder,
         matchesGoldenFile('templates/todo_completed_item.png'),
