@@ -12,12 +12,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   collection: ^1.18.0
   dio: ^5.4.3+1
-  mocktail: ^1.0.4
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mocktail: ^1.0.4
   alchemist: ^0.12.1
   flutter_lints: ^6.0.0
   integration_test:
